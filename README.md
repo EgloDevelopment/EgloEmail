@@ -20,10 +20,10 @@ how to use these routes is shown below.
 This server runs at port 4200 locally
 
 
-> Get emails
+GET EMAILS
 `http://your-server:4200/emails/get?auth=YOUR_GET_AUTH_TOKEN_HERE`
 
-JSON:
+>JSON:
 
 ```
 {
@@ -33,10 +33,10 @@ JSON:
 
 
 
-> Send email
+SEND EMAIL
 `http://your-server:4200/emails/send?auth=YOUR_SEND_AUTH_TOKEN_HERE`
 
-JSON:
+>JSON:
 
 ```
 {
@@ -49,10 +49,10 @@ JSON:
 
 
 
-> Receive email
+RECEIVE EMAIL
 `http://your-server:4200/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE`
 
-CONTENT:
+>CONTENT:
 
 ```
 RAW EMAIL FROM CLOUDFLARE WORKER (NOT A ROUTE FOR PEOPLE)
@@ -60,10 +60,10 @@ RAW EMAIL FROM CLOUDFLARE WORKER (NOT A ROUTE FOR PEOPLE)
 
 
 
-> Sent emails
+SENT EMAILS
 `http://your-server:4200/emails/sent?auth=YOUR_SENT_AUTH_TOKEN_HERE`
 
-JSON:
+>JSON:
 
 ```
 {
