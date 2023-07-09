@@ -17,6 +17,8 @@ All of the sensitive routes are secured with their own keys as specified in the 
 how to use these routes is shown below.
 
 # Connecting
+This server runs at port 4200 locally
+
 
 > Get emails
 `http://your-server:4200/emails/get?auth=YOUR_GET_AUTH_TOKEN_HERE`
@@ -28,6 +30,8 @@ JSON:
     email: "EMAIL OF USER YOU WANT TO GET RECEIVED EMAILS FROM"
 }
 ```
+
+
 
 > Send email
 `http://your-server:4200/emails/send?auth=YOUR_SEND_AUTH_TOKEN_HERE`
@@ -43,6 +47,8 @@ JSON:
 }
 ```
 
+
+
 > Receive email
 `http://your-server:4200/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE`
 
@@ -51,6 +57,8 @@ CONTENT:
 ```
 RAW EMAIL FROM CLOUDFLARE WORKER (NOT A ROUTE FOR PEOPLE)
 ```
+
+
 
 > Sent emails
 `http://your-server:4200/emails/sent?auth=YOUR_SENT_AUTH_TOKEN_HERE`
@@ -64,6 +72,8 @@ JSON:
 ```
 
 # Setup with Cloudflare Email Worker
+Paste this code into the Cloudflare Worker, make sure to change the URL below to match your server
+
 
 ```
 async function streamToString(stream) {
