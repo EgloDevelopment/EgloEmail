@@ -9,7 +9,7 @@ Email server for Eglo
 > just make sure to create a .env file and fill it in with the correct data, using the example.env file.
 
 > Docker
-> Run this using the Dockerfile, and make sure to add the enviroment variables specified in the .env
+> Run this using the Dockerfile, and make sure to add the enviroment variables specified in the example.env
 
 # Hosting
 
@@ -17,11 +17,11 @@ All of the sensitive routes are secured with their own keys as specified in the 
 how to use these routes is shown below.
 
 # Connecting
-This server runs at port 4200 locally
+This server runs at port 3000 locally
 
 
 GET EMAILS
-`http://your-server:4200/emails/get?auth=YOUR_GET_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/emails/get?auth=YOUR_GET_AUTH_TOKEN_HERE`
 
 >JSON:
 
@@ -34,7 +34,7 @@ GET EMAILS
 
 
 SEND EMAIL
-`http://your-server:4200/emails/send?auth=YOUR_SEND_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/emails/send?auth=YOUR_SEND_AUTH_TOKEN_HERE`
 
 >JSON:
 
@@ -50,7 +50,7 @@ SEND EMAIL
 
 
 RECEIVE EMAIL
-`http://your-server:4200/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE`
 
 >CONTENT:
 
@@ -61,7 +61,7 @@ RAW EMAIL FROM CLOUDFLARE WORKER (NOT A ROUTE FOR PEOPLE)
 
 
 SENT EMAILS
-`http://your-server:4200/emails/sent?auth=YOUR_SENT_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/emails/sent?auth=YOUR_SENT_AUTH_TOKEN_HERE`
 
 >JSON:
 
@@ -93,7 +93,7 @@ export default {
   async email(event, env, ctx) {
     const rawEmail = await streamToString(event.raw);
 
-      await fetch("http://your-server:4200/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE", {
+      await fetch("http://your-server:3000/api/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
