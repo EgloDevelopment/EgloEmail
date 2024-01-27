@@ -32,6 +32,17 @@ GET EMAILS
 ```
 
 
+READ EMAIL
+`http://your-server:3000/api/emails/email?auth=YOUR_GET_AUTH_TOKEN_HERE`
+
+>JSON:
+
+```
+{
+    id: "messageId OF THE EMAIL"
+}
+```
+
 
 SEND EMAIL
 `http://your-server:3000/api/emails/send?auth=YOUR_SEND_AUTH_TOKEN_HERE`

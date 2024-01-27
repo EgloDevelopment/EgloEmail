@@ -2,22 +2,27 @@
 import React, { useState, useEffect } from 'react';
 
 
-
-
 // UI imports
 import { Button, ButtonGroup } from "@nextui-org/react";
 
 
 // Function imports
+import Cookies from "js-cookie";
 
 
 // Start of page
-export default function Home() {
+export default function Page() {
+  useEffect(() => {
+    if (Cookies.get("token") === undefined) {
+      window.location.href = "/login"
+    } else {
+      window.location.href = "/app"
+    }
+  }, []);
+
   return (
     <main>
-      <Button color="primary">
-        Nothing Here Yet...
-      </Button>
+      {/* Redirect page, so nothing here */}
     </main>
   );
 }
