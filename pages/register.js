@@ -51,7 +51,9 @@ export default function Page() {
   }
 
   useEffect(() => {
-    setServerURL(window.location.hostname)
+    let url = window.location.hostname.split('.')
+    setServerURL(`${url[tokens.length - 2]}.${url[tokens.length - 1]}`)
+    
     getAllowRegistering()
   }, []);
 
