@@ -53,7 +53,14 @@ export default function Page() {
 
     useEffect(() => {
         let url = window.location.hostname.split('.')
-        setServerURL(`${url[tokens.length - 2]}.${url[tokens.length - 1]}`)
+        let domain = url[url.length - 2]
+        let extension = url[url.length - 1]
+        
+        if (domain === undefined) {
+            setServerURL(`${extension}`)
+        } else {
+            setServerURL(`${domain}.${extension}`)
+        }
     }, []);
 
     return (
