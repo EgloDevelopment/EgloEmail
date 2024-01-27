@@ -53,6 +53,7 @@ export default async function handler(req, res) {
             fields: ["email"],
             data: "Address already in use",
         });
+        return;
     }
 
 
