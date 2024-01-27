@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Eglo</title>
+        <title>EgloEmail</title>
       </Head>
       <Component {...pageProps} />
     </>
