@@ -2,16 +2,15 @@ const { getMongo } = require("@/databases/mongo")
 
 export default async function handler(req, res) {
     try {
-        let email = Buffer.from(req.cookies.token, "base64").toString("utf8").split(":")[0]
-
         const mongoClient = await getMongo();
 
-        const mailboxes_array = await mongoClient
+        const email = await mongoClient
             .db("EgloEmail")
-            .collection("Users")
-            .findOne({ email: email })
+            .collection("Received")
+            .findOne({ messageId: req.body.id })
 
-        res.status(200).json(mailboxes_array.owned_emails);
+
+        res.status(200).json(email);
     } catch (e) {
         res.status(500).json({
             error: true,

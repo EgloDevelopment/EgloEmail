@@ -2,16 +2,21 @@ const { getMongo } = require("@/databases/mongo")
 
 export default async function handler(req, res) {
     try {
-        let email = Buffer.from(req.cookies.token, "base64").toString("utf8").split(":")[0]
+        if (await req.query.auth !== process.env.GET_AUTH) {
+            res.status(403).json({ error: "Invalid GET auth token" });
+            return
+        }
 
         const mongoClient = await getMongo();
 
-        const mailboxes_array = await mongoClient
+        const emails_array = await mongoClient
             .db("EgloEmail")
-            .collection("Users")
-            .findOne({ email: email })
+            .collection("Received")
+            .find({ "to.text": req.body.email })
+            .toArray();
 
-        res.status(200).json(mailboxes_array.owned_emails);
+
+        res.status(200).json(emails_array);
     } catch (e) {
         res.status(500).json({
             error: true,

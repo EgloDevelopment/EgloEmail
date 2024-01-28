@@ -21,7 +21,7 @@ This server runs at port 3000 locally
 
 
 GET EMAILS
-`http://your-server:3000/api/emails/get?auth=YOUR_GET_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/email-api/get?auth=YOUR_GET_AUTH_TOKEN_HERE`
 
 >JSON:
 
@@ -32,20 +32,8 @@ GET EMAILS
 ```
 
 
-READ EMAIL
-`http://your-server:3000/api/emails/email?auth=YOUR_GET_AUTH_TOKEN_HERE`
-
->JSON:
-
-```
-{
-    id: "messageId OF THE EMAIL"
-}
-```
-
-
 SEND EMAIL
-`http://your-server:3000/api/emails/send?auth=YOUR_SEND_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/email-api/send?auth=YOUR_SEND_AUTH_TOKEN_HERE`
 
 >JSON:
 
@@ -61,7 +49,7 @@ SEND EMAIL
 
 
 RECEIVE EMAIL
-`http://your-server:3000/api/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/email-api/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE`
 
 >CONTENT:
 
@@ -72,7 +60,7 @@ RAW EMAIL FROM CLOUDFLARE WORKER (NOT A ROUTE FOR PEOPLE)
 
 
 SENT EMAILS
-`http://your-server:3000/api/emails/sent?auth=YOUR_SENT_AUTH_TOKEN_HERE`
+`http://your-server:3000/api/email-api/sent?auth=YOUR_SENT_AUTH_TOKEN_HERE`
 
 >JSON:
 
@@ -104,7 +92,7 @@ export default {
   async email(event, env, ctx) {
     const rawEmail = await streamToString(event.raw);
 
-      await fetch("http://your-server:3000/api/emails/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE", {
+      await fetch("http://your-server:3000/api/email-api/receive?auth=YOUR_RECEIVE_AUTH_TOKEN_HERE", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

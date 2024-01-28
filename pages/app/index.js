@@ -11,7 +11,6 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 // Function imports
 import makePostRequest from '@/functions/make-post-request';
 import Cookies from "js-cookie";
-import parse from "html-react-parser"
 
 
 // Start of page
@@ -43,7 +42,7 @@ export default function Page() {
     async function getEmailPreviews(mailbox) {
         setActiveMailbox(mailbox)
 
-        await makePostRequest(`/api/emails/get?auth=${Cookies.get("get_token")}`, {
+        await makePostRequest("/api/emails/get", {
             email: mailbox
         }).then((response) => {
             setEmail(response)
