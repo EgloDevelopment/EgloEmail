@@ -12,8 +12,10 @@ export default async function handler(req, res) {
         const mongoClient = await getMongo();
 
         try {
-            simpleParser(req.body.raw_email, async (err, parsed) => {
-                await mongoClient.db("EgloEmail").collection("Received").insertOne(parsed);
+            simpleParser(req.body.raw_email, async (err, email_json) => {
+                email_json.to.text = email_json.to.text.toLowerCase()
+
+                await mongoClient.db("EgloEmail").collection("Received").insertOne(email_json);
             });
 
             res.status(200).json({ success: true, delivered_time: Date.now() });
