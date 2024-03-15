@@ -92,7 +92,7 @@ export default {
   async email(event, env, ctx) {
     const rawEmail = await streamToString(event.raw);
 
-      await fetch("https://email.eglo.pw/api/email-api/receive?auth=fdjh2ifhis02jh02enwjie2e0runhispuher2", {
+      await fetch("https://your-email-server.com/api/email-api/receive?auth=your-auth-token", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
